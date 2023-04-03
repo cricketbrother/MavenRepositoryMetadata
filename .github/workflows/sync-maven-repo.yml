@@ -16,6 +16,9 @@ jobs:
     - name: Install wget
       run: sudo apt-get install wget
       
+    - name: List files
+      run: ls -la
+      
     - name: Download files
       run: |
         wget --recursive --no-parent --no-clobber --no-check-certificate -R "*.jar" https://repo1.maven.org/maven2/
