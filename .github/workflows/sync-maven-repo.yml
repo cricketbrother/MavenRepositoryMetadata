@@ -14,7 +14,7 @@ jobs:
 
       - name: Sync Maven Repository
         run: |
-          rsync -aHAXxv --exclude="*.jar" --delete-after --progress rsync://repo1.maven.org/maven2/ ./maven2/
+          rsync -aHAXxv --exclude="*.jar" --delete-after --progress rsync://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/ ./maven2/org/apache/logging/log4j/log4j-core/
           git add -A
           git commit -m "Sync Maven Repository"
           git push
