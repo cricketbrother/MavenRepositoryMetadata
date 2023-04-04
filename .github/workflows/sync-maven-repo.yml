@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Upgrade OS
-      - run: sudo apt update -y && sudo apt full-upgrade -y
+        run: sudo apt update -y && sudo apt full-upgrade -y
 
       - name: Install Golang
-      - run: sudo apt install golang -y
+        run: sudo apt install golang -y
 
       - name: Verify Golang version
-      - run: go version
+        run: go version
