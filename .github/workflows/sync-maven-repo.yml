@@ -3,28 +3,33 @@ name: Sync Maven Repository
 on:
   schedule:
     - cron: '0 0 * * *' # 每天 UTC 0:00 同步
-  workflow_dispatch:
 
 jobs:
   download_files:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: Install wget
-      run: sudo apt-get install wget
-      
-    - name: List files
-      run: ls -la
-      
-    - name: Download files
-      run: |
-        wget --recursive --no-parent --no-clobber --no-check-certificate -R "*.jar" https://repo1.maven.org/maven2/
-        find . -type f ! -name "*.jar" -exec cp --parents {} /github/workspace \;
-        
-    - name: Commit changes
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Sync Maven Repository"
+      - name: Upgrade OS
+      - run: sudo apt update -y && sudo apt full-upgrade -y
+
+      - name: Install Golang
+      - run: sudo apt install golang -y
+
+#    - name: Checkout code
+#      uses: actions/checkout@v2
+#
+#    - name: Install wget
+#      run: sudo apt-get install wget
+#
+#    - name: List files
+#      run: ls -la
+#
+#    - name: Download files
+#      run: |
+#        wget --recursive --no-parent --no-clobber --no-check-certificate -R "*.jar" https://repo1.maven.org/maven2/
+#        find . -type f ! -name "*.jar" -exec cp --parents {} /github/workspace \;
+#
+#    - name: Commit changes
+#      uses: stefanzweifel/git-auto-commit-action@v4
+#      with:
+#        commit_message: "Sync Maven Repository"
