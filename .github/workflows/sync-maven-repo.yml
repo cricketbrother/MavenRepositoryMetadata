@@ -1,4 +1,4 @@
-name: Sync Maven Repository
+name: Get Maven Repository Metadata
 
 on:
   schedule:
@@ -6,15 +6,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  download_files:
+  get_maven_repository_metadata:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Upgrade OS
+      - name: Upgrade os
         run: sudo apt update -y && sudo apt full-upgrade -y
 
-      - name: Install Golang
+      - name: Install golang
         run: sudo apt install golang -y
 
-      - name: Verify Golang version
+      - name: Verify golang version
         run: go version
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: List directories and files
+        run: ll -a
