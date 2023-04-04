@@ -22,5 +22,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: List directories and files
-        run: ls -la
+      - name: Build executable program
+        run: go build -o ./main .
+
+      - name: Add executable permission
+        run: sudo chmod +x main
+
+      - name: Run
+        run: ./main
