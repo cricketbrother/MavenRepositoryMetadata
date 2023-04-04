@@ -13,6 +13,9 @@ jobs:
       - name: Upgrade os
         run: sudo apt update -y && sudo apt full-upgrade -y
 
+      - name: Set timezone
+        run: sudo timedatectl set-timezone Asia/Shanghai
+
       - name: Install golang
         run: sudo apt install golang -y
 
