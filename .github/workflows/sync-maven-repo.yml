@@ -3,7 +3,7 @@ name: Sync Maven Repository
 on:
   schedule:
     - cron: '0 0 * * *' # 每天 UTC 0:00 同步
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   download_files:
