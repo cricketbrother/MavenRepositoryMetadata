@@ -20,7 +20,7 @@ jobs:
         run: sudo timedatectl set-timezone Asia/Shanghai
 
       - name: Get all 'maven-metadata.xml' files from https://repo1.maven.org/maven2/
-        run: wget -r -np -L -e robots=off --no-check-certificate -A "maven-metadata.xml" --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" https://repo1.maven.org/maven2/ | grep ' saved '
+        run: wget -r -np -L -e robots=off --no-check-certificate -A "maven-metadata.xml" --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" https://repo1.maven.org/maven2/ | grep 'maven-metadata.xml’ saved '
 
       - name: Find all 'maven-metadata.xml' files and save filepaths to maven-metadata-files.txt
         run: find ./ -name 'maven-metadata.xml' > ./maven-metadata-files.txt
