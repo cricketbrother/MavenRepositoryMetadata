@@ -30,7 +30,6 @@ func GetArchetypes() {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-
 		}
 	}(resp.Body)
 
@@ -80,7 +79,6 @@ func verifyMavenMetadata(prefixUrl string) (ALevelMetadata, error) {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-
 		}
 	}(resp.Body)
 	if resp.StatusCode == 200 {
@@ -91,7 +89,6 @@ func verifyMavenMetadata(prefixUrl string) (ALevelMetadata, error) {
 		defer func(Body io.ReadCloser) {
 			err := Body.Close()
 			if err != nil {
-
 			}
 		}(resp1.Body)
 		err = xml.NewDecoder(resp1.Body).Decode(&aLevelMetadata)
@@ -114,7 +111,6 @@ func getNextLevelDirectories(prefixUrl string) (string, []string) {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-
 		}
 	}(resp.Body)
 	node, err := html.Parse(resp.Body)
@@ -140,7 +136,6 @@ func getHash(hashUrl string) string {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-
 		}
 	}(resp.Body)
 	hashBytes, err := io.ReadAll(resp.Body)
